@@ -1,0 +1,33 @@
+{
+  "name": "task-tracker",
+  "version": "1.0.0",
+  "description": "db server to manage employees & task assignments ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaulCamargo/CS395.48_Final_backend.git"
+  },
+  "author": "Raul Camargo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-handlebars": "^6.0.6",
+    "nodemon": "^2.0.16",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "pgtools": "^0.3.2",
+    "sequelize": "^6.27.0",
+    "sqlite3": "^5.1.4"
+  },
+  "bugs": {
+    "url": "https://github.com/RaulCamargo/CS395.48_Final_backend/issues"
+  },
+  "homepage": "https://github.com/RaulCamargo/CS395.48_Final_backend#readme"
+}
