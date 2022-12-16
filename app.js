@@ -1,5 +1,6 @@
 // Database setup util
 const createDB = require('./database/utils/createDB');
+const seedDB = require('./database/utils/seedDB')
 
 // Database instance
 const db = require('./database');
@@ -9,8 +10,10 @@ const syncDatabase = async () =>
     {
         try
         {
-            await db.sync();
+            await db.sync({force: true});
             console.log('-----SYNCED to DB-----');
+            await seedDB();
+            console.log('--------Successfully seeded db--------');
         }
         catch (err)
         {
