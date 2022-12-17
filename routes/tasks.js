@@ -27,7 +27,21 @@ router.post('/', (req, res, next) =>
         Task.create(req.body)
             .then(createdTask => res.status(200).json(createdTask))
             .catch(err => next(err));
-    });
+    }
+);
+
+// Delete task
+router.delete('/:id', (req, res, next) =>
+    {
+        Task.destroy(
+            {
+                where: {id: req.params.id}
+            }
+        )
+        .then(() => res.status(200).json('Task deleted.'))
+        .catch(err => next(err));
+    }
+);
 
 // Edit task
 router.put('/:id', ash(async(req, res) =>
