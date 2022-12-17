@@ -30,3 +30,5 @@ const createDB = async () =>
         }
     }
 }
+
+module.exports = createDB;
