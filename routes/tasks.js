@@ -21,6 +21,14 @@ router.get('/:id', ash(async(req, res) =>
     }
 ));
 
+// Add task
+router.post('/', (req, res, next) =>
+    {
+        Task.create(req.body)
+            .then(createdTask => res.status(200).json(createdTask))
+            .catch(err => next(err));
+    });
+
 // Edit task
 router.put('/:id', ash(async(req, res) =>
     {
