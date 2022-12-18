@@ -31,16 +31,14 @@ router.post('/', (req, res, next) =>
 );
 
 // Delete task
-router.delete('/:id', (req, res, next) =>
+router.delete('/:id', ash(async(req, res) =>
     {
-        Task.destroy(
+        await Task.destroy(
             {
                 where: {id: req.params.id}
-            }
-        )
-        .then(() => res.status(200).json('Task deleted.'))
-        .catch(err => next(err));
-    }
+            });
+        res.status(200).json('Task deleted.');
+    })
 );
 
 // Edit task
