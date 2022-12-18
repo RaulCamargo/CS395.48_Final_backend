@@ -29,6 +29,17 @@ router.post('/', ash(async(req, res)=>
     })
 );
 
+// Delete employee by ID
+router.delete('/:id', ash(async(req, res) =>
+    {
+        await Employee.destroy(
+            {
+                where: {id: req.params.id}
+            });
+        res.status(200).json('Employee deleted.');
+    })
+);
+
 // Edit employee
 router.put('/:id', ash(async(req, res) =>
     {
