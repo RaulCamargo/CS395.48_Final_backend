@@ -13,4 +13,12 @@ router.get('/', ash(async(req, res) =>
     })
 );
 
+// Get employee by ID
+router.get('/:id', ash(async(req, res) =>
+    {
+        let employee = await Employee.findByPk(req.params.id, {include: [Task]});
+        res.status(200).json(employee);
+    })
+    );
+
 module.exports = router;
