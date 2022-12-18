@@ -8,7 +8,7 @@ const ash = require('express-async-handler');
 // Get ALL tasks
 router.get('/', ash(async(req, res) =>
     {
-        let tasks = await Task.findAll();
+        let tasks = await Task.findAll({include: [Employee]});
         res.status(200).json(tasks);
     }
 ));
@@ -31,16 +31,14 @@ router.post('/', (req, res, next) =>
 );
 
 // Delete task
-router.delete('/:id', (req, res, next) =>
+router.delete('/:id', ash(async(req, res) =>
     {
-        Task.destroy(
+        await Task.destroy(
             {
                 where: {id: req.params.id}
-            }
-        )
-        .then(() => res.status(200).json('Task deleted.'))
-        .catch(err => next(err));
-    }
+            });
+        res.status(200).json('Task deleted.');
+    })
 );
 
 // Edit task
