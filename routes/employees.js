@@ -21,6 +21,14 @@ router.get('/:id', ash(async(req, res) =>
     })
 );
 
+// Add employee
+router.post('/', ash(async(req, res)=> 
+    {
+        let newEmployee = await Employee.create(req.body);
+        res.status(200).json(newEmployee);
+    })
+);
+
 // Edit employee
 router.put('/:id', ash(async(req, res) =>
     {
