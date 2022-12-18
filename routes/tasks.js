@@ -8,7 +8,7 @@ const ash = require('express-async-handler');
 // Get ALL tasks
 router.get('/', ash(async(req, res) =>
     {
-        let tasks = await Task.findAll();
+        let tasks = await Task.findAll({include: [Employee]});
         res.status(200).json(tasks);
     }
 ));
